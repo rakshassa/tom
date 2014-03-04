@@ -1,0 +1,17 @@
+<% provide(:title, @vendor.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @vendor.name %>
+      </h1>
+    </section>   
+  </aside>
+
+  <div class="span8">
+      <%= link_to "Edit this Vendor", edit_vendor_path,
+                                class: "btn btn-large btn-primary" %>    
+      <h3>Include Details Here.</h3>
+     
+  </div>  
+</div>

@@ -1,0 +1,10 @@
+<li>
+
+  <%= link_to vendor.name, vendor %>
+  &nbsp&nbsp&nbsp&nbsp
+  <small>
+    <%= link_to "delete", vendor, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  </small>
+ 
+</li>

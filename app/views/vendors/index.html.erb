@@ -1,0 +1,14 @@
+<% provide(:title, 'All vendors') %>
+<h1>All vendors</h1>
+
+
+<%= link_to "Create a Vendor", new_vendor_path,
+                                class: "btn btn-large btn-primary" %>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @vendors %>
+</ul>
+
+<%= will_paginate %>

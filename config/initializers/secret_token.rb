@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tom::Application.config.secret_key_base = 'ad130701d07b635dc9f21413a87fe9578f299104ab293b83564e2dde3cef9a2edd7fa560136b55698af7ce6ad1e096ac825eb3150615fe96d8484a3d005b58ea'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Tom::Application.config.secret_key_base = secure_token
