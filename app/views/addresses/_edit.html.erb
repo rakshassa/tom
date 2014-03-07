@@ -1,0 +1,24 @@
+<div class="row address-form">
+  <div class="span6">
+    <%= form_for(address) do |f| %>
+
+      <div>
+        <%= f.label :street1, "Address", class: 'wide' %>
+        <%= f.text_field :street1, placeholder: "Street", class: 'span6'  %>     
+        <%= f.text_field :street2, placeholder: "Street", class: 'span6' %>
+      </div>
+
+      <div class="form-inline">      
+        <%= f.text_field :city, placeholder: "City", class: 'span3' %>
+        <%= f.text_field :state, placeholder: "State", class: 'span1'%>      
+        <%= f.text_field :zip, placeholder: "Zip Code", class: 'span2' %>
+      </div>
+
+      <%= link_to "delete", address_path(address: address, vendor: vendor), 
+            method: :delete, remote: true, data: { confirm: "You sure?" }, 
+            disable_with: "delete", class: 'close' %>
+
+    <% end %>
+
+  </div>
+</div>

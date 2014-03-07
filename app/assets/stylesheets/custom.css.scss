@@ -180,9 +180,17 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+.wide {
+  width: 100%;
+}
+
+.narrow {
+  width: 50%;
 }
 
 input {

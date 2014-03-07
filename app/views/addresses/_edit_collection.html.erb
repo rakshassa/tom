@@ -1,0 +1,7 @@
+<% if @vendor.addresses.any? %>
+  <% @vendor.addresses.each do |address| %>
+  		<%= render 'addresses/edit',  { address: address, vendor: @vendor } %>
+  <% end %>
+<% else %>
+  <%= render 'addresses/edit', { address: @address, vendor: @vendor } %>
+<% end %>
