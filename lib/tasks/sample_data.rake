@@ -1,25 +1,18 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    make_addresses
-    make_addresstypes
     make_vendors
-
+    make_addresses
+    make_addresstypes    
     make_relationships
   end
 end
 
-def make_relationships
-  Vendor.find(1).add_address!(Address.find(1))
+def make_relationships  
   Address.find(1).add_type!(Addresstype.find(1))
-
-  Vendor.find(2).add_address!(Address.find(2))
-  Vendor.find(2).add_address!(Address.find(3))
   Address.find(2).add_type!(Addresstype.find(2))
   Address.find(2).add_type!(Addresstype.find(3))
 
-  Vendor.find(3).add_address!(Address.find(4))
-  Vendor.find(3).add_address!(Address.find(5))
 
 end
 
@@ -35,19 +28,22 @@ end
 
 
 def make_addresses
-  primary = Address.create!(street1: "3760 Lilly Rd",
+  primary = Vendor.find(1).addresses.build(street1: "3760 Lilly Rd",
                city: "Brookfield",
                state: "WI",
                zip: "53005",
                is_primary: true)
+  primary.save
+
   5.times do |n|
     street1  = Faker::Name.name
     city = Faker::Name.name
     
-    Address.create!(street1: street1,
+    newAddress = Vendor.find(2).addresses.build(street1: street1,
                  city: city,
                  state: "WI",
                  zip: 53005)      
+    newAddress.save
   end
 end
 

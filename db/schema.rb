@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307031802) do
+ActiveRecord::Schema.define(version: 20140307031726) do
 
   create_table "address_type_relations", force: true do |t|
     t.integer  "address_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140307031802) do
   add_index "address_type_relations", ["address_id"], name: "index_address_type_relations_on_address_id"
 
   create_table "addresses", force: true do |t|
+    t.integer  "vendor_id"
     t.boolean  "is_primary"
     t.string   "street1"
     t.string   "street2"
@@ -34,21 +35,13 @@ ActiveRecord::Schema.define(version: 20140307031802) do
     t.datetime "updated_at"
   end
 
+  add_index "addresses", ["vendor_id"], name: "index_addresses_on_vendor_id"
+
   create_table "addresstypes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "vendor_address_relationships", force: true do |t|
-    t.integer  "vendor_id"
-    t.integer  "address_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "vendor_address_relationships", ["vendor_id", "address_id"], name: "index_vendor_address_relationships_on_vendor_id_and_address_id", unique: true
-  add_index "vendor_address_relationships", ["vendor_id"], name: "index_vendor_address_relationships_on_vendor_id"
 
   create_table "vendors", force: true do |t|
     t.string   "name"
