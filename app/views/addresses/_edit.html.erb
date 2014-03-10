@@ -1,4 +1,4 @@
-<div id="address_<% address.id %>" class="row">
+<div class="row">
   <div class="span6">
     <%= form_for(address, remote: true) do |f| %>
 
@@ -14,9 +14,10 @@
         <%= f.text_field :zip, placeholder: "Zip Code", class: 'span2' %>
       </div>
 
-      <%= f.submit "Save Address", class: "btn btn-large btn-primary" %>
-
     <% end %>
+
+
+
 
   </div>
 </div>

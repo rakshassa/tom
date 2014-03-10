@@ -14,7 +14,6 @@ class VendorsController < ApplicationController
     @vendor.destroy
 
     flash[:success] = "Vendor deleted."
-    #redirect_to vendors_url
     
     respond_to do |format|      
       format.js
