@@ -18,11 +18,19 @@ def make_relationships
   Address.find(2).add_type!(Addresstype.find(2))
   Address.find(2).add_type!(Addresstype.find(3))
 
+  Vendor.find(3).add_address!(Address.find(4))
+  Vendor.find(3).add_address!(Address.find(5))
+
 end
 
 def make_vendors
   Vendor.create!(name: "Sample Vendor")
   Vendor.create!(name: "Second Vendor")
+  Vendor.create!(name: "Third Vendor")
+
+  35.times do |n|
+    Vendor.create!(name: Faker::Name.name )
+  end
 end
 
 
@@ -32,7 +40,7 @@ def make_addresses
                state: "WI",
                zip: "53005",
                is_primary: true)
-  3.times do |n|
+  5.times do |n|
     street1  = Faker::Name.name
     city = Faker::Name.name
     

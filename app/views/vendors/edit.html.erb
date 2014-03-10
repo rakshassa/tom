@@ -9,12 +9,8 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'span6' %>
 
-	  <%= render 'addresses/edit_collection', { address: @address, vendor: @vendor }  %>
+	    <%= render 'addresses/edit_collection', { address: @address, vendor: @vendor }  %>
 	  
-
-      <%= link_to "Add another address", address_path(vendor: @vendor), 
-      		method: :post, remote: true %>
-
       <br>
       <br>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>

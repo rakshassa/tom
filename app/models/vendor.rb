@@ -1,6 +1,6 @@
 class Vendor < ActiveRecord::Base
 	has_many :vendor_address_relationships, foreign_key: "vendor_id", dependent: :destroy
-	has_many :addresses, through: :vendor_address_relationships, source: :Address
+	has_many :addresses, through: :vendor_address_relationships, source: :address
 
 
     validates(:name,  {presence: true, length: { maximum: 50 } } )
@@ -16,6 +16,7 @@ class Vendor < ActiveRecord::Base
 	end
 
 	def clear_addresses!()
+		addresses.each(&:destroy)
 		vendor_address_relationships.destroy_all
 	end
 end

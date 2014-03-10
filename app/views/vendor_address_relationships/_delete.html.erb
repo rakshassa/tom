@@ -1,0 +1,7 @@
+
+    <%= form_for(vendor.vendor_address_relationships.find_by(address_id: address.id), 
+    		html: { method: :delete, format: "js" }, remote: true) do |f| %>
+
+      <%= f.submit "delete", class: "btn btn-large" %>
+          
+    <% end %>

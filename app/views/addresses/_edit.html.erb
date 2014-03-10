@@ -1,6 +1,6 @@
-<div class="row address-form">
+<div id="address_<% address.id %>" class="row">
   <div class="span6">
-    <%= form_for(address) do |f| %>
+    <%= form_for(address, remote: true) do |f| %>
 
       <div>
         <%= f.label :street1, "Address", class: 'wide' %>
@@ -14,9 +14,7 @@
         <%= f.text_field :zip, placeholder: "Zip Code", class: 'span2' %>
       </div>
 
-      <%= link_to "delete", address_path(address: address, vendor: vendor), 
-            method: :delete, remote: true, data: { confirm: "You sure?" }, 
-            disable_with: "delete", class: 'close' %>
+      <%= f.submit "Save Address", class: "btn btn-large btn-primary" %>
 
     <% end %>
 

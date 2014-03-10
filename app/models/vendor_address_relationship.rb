@@ -1,6 +1,6 @@
 class VendorAddressRelationship < ActiveRecord::Base
-	belongs_to :Vendor
-	belongs_to :Address
+	belongs_to :vendor
+	belongs_to :address
 
 	validates :address_id, presence: true
 	validates :vendor_id, presence: true	

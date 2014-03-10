@@ -9,9 +9,16 @@ class VendorsController < ApplicationController
   end
 
   def destroy
-    Vendor.find(params[:id]).destroy
+    @vendor = Vendor.find(params[:id])
+    @vendor.clear_addresses!
+    @vendor.destroy
+
     flash[:success] = "Vendor deleted."
-    redirect_to vendors_url
+    #redirect_to vendors_url
+    
+    respond_to do |format|      
+      format.js
+    end    
   end
 
   def create

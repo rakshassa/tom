@@ -1,9 +1,9 @@
 class Address < ActiveRecord::Base
 	has_many :address_type_relations, foreign_key: "address_id", dependent: :destroy
-	has_many :address_types, through: :address_type_relations, source: :Addresstype
+	has_many :address_types, through: :address_type_relations, source: :addresstype
 
-	has_one :vendor_address_relationships, foreign_key: "address_id", dependent: :destroy
-	has_one :vendor, through: :vendor_address_relationships, source: :Vendor
+	has_one :vendor_address_relationship, foreign_key: "address_id", dependent: :destroy
+	has_one :vendor, through: :vendor_address_relationship, source: :vendor
 
 
 	validates(:street1,  {presence: true, length: { maximum: 30 } } )

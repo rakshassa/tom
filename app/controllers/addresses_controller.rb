@@ -2,18 +2,6 @@ class AddressesController < ApplicationController
 
 
 
-  def destroy
-    #@address = Address.find(params[:id])
-    #if (@address.destroy)
-    @vendor = params[:vendor]
-    @address = params[:address]
-
-    if (@vendor.addresses.find_by(@address.id).destroy)
-      render :status => :ok
-    else
-      render :js => "alert('error deleting the address');"
-    end
-  end
 
   def create
     #@address = Address.new
@@ -24,5 +12,24 @@ class AddressesController < ApplicationController
            :layout => false, 
            :status => :created
   end
+
+
+  def update
+    @address = Address.find(params[:id])
+    @vendor = @address.vendor
+    
+    @address.update_attributes(vendor_params)
+    flash[:success] = "Address updated"
+    
+    respond_to do |format|
+      format.js
+    end    
+  end 
+
+  private
+
+    def address_params
+      params.require(:address).permit(:street1, :street2, :city, :state, :zip)
+    end  
 
 end

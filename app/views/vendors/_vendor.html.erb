@@ -1,10 +1,13 @@
-<li>
+<div id="vendor_<%= vendor.id %>">
+	<li>
+	  
+	  <%= link_to vendor.name, vendor %>
+	  &nbsp&nbsp&nbsp&nbsp
+	  <small>
+	    <%= link_to "delete", vendor, method: :delete,
+	                data: { confirm: "Are you sure?" }, remote: true %>
+	  </small>
+	  
+	</li>
 
-  <%= link_to vendor.name, vendor %>
-  &nbsp&nbsp&nbsp&nbsp
-  <small>
-    <%= link_to "delete", vendor, method: :delete,
-                                  data: { confirm: "Are you sure?" } %>
-  </small>
- 
-</li>
+</div>

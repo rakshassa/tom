@@ -1,7 +1,11 @@
-<% if @vendor.addresses.any? %>
-  <% @vendor.addresses.each do |address| %>
-  		<%= render 'addresses/edit',  { address: address, vendor: @vendor } %>
-  <% end %>
-<% else %>
-  <%= render 'addresses/edit', { address: @address, vendor: @vendor } %>
-<% end %>
+<div id="addresses_form">
+	<% if @vendor.addresses.any? %>
+	  <% @vendor.addresses.each do |address| %>
+	  		<%= render 'addresses/edit',  { address: address, vendor: @vendor } %>
+	  		<%= render 'vendor_address_relationships/delete',  
+	  				{ address: address, vendor: @vendor } %>
+	  <% end %>
+	<% else %>
+	  <%= render 'addresses/edit', { address: @address, vendor: @vendor } %>
+	<% end %>
+</div>

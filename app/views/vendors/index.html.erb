@@ -5,10 +5,6 @@
 <%= link_to "Create a Vendor", new_vendor_path,
                                 class: "btn btn-large btn-primary" %>
 
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @vendors %>
-</ul>
-
-<%= will_paginate %>
+<div id="vendor_list">
+	<%= render 'vendors/vendors', vendors: @vendors %>
+</div>
