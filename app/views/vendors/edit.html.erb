@@ -9,8 +9,11 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'span6' %>
 
-	    <%= render 'addresses/edit_collection', { address: @address, vendor: @vendor }  %>
-	  
+      <%= render :partial => 'addresses/edit_addresses', :locals => { :f => f } %>      
+
+	    <%= link_to "Add another address", create_address_vendor_path(@vendor), 
+          method: :put, remote: true %>
+
       <br>
       <br>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
