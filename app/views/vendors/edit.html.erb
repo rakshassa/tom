@@ -3,22 +3,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@vendor) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'span6' %>
-
-      <%= render :partial => 'addresses/edit_addresses', :locals => { :f => f } %>      
-
-	    <%= link_to "Add another address", create_address_vendor_path(@vendor), 
-          method: :put, remote: true %>
-
-      <br>
-      <br>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-      <%= link_to "Cancel", @vendor,  method: :get, class: "btn btn-large" %>
-    <% end %>
+    <%= render 'vendors/vendor_fields', :locals => { :vendor => @vendor } %>
 
   </div>
 </div>

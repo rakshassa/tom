@@ -1,0 +1,17 @@
+    <%= nested_form_for(@vendor) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'span6' %>
+
+      <br><h3>Addresses</h3>
+      <%= f.fields_for :addresses %>
+           
+
+	    <p><%= f.link_to_add "Add an address", :addresses %></p>
+
+      <br>
+      <br>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= link_to "Cancel", vendors_path,  method: :get, class: "btn btn-large" %>
+    <% end %>
