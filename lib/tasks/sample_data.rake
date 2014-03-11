@@ -3,18 +3,9 @@ namespace :db do
   task populate: :environment do
     make_vendors
     make_addresses
-    make_addresstypes    
-    make_relationships
   end
 end
 
-def make_relationships  
-  Address.find(1).add_type!(Addresstype.find(1))
-  Address.find(2).add_type!(Addresstype.find(2))
-  Address.find(2).add_type!(Addresstype.find(3))
-
-
-end
 
 def make_vendors
   Vendor.create!(name: "Sample Vendor")
@@ -42,14 +33,10 @@ def make_addresses
     newAddress = Vendor.find(2).addresses.build(street1: street1,
                  city: city,
                  state: "WI",
-                 zip: 53005)      
+                 zip: 53005,
+                 types: "['sales']")      
     newAddress.save
   end
 end
 
-def make_addresstypes
-  Addresstype.create!(name: "sales")
-  Addresstype.create!(name: "manufacturing")
-  Addresstype.create!(name: "billing")
-end
 

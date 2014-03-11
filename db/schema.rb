@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307031726) do
-
-  create_table "address_type_relations", force: true do |t|
-    t.integer  "address_id"
-    t.integer  "addresstype_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "address_type_relations", ["address_id", "addresstype_id"], name: "index_address_type_relations_on_address_id_and_addresstype_id", unique: true
-  add_index "address_type_relations", ["address_id"], name: "index_address_type_relations_on_address_id"
+ActiveRecord::Schema.define(version: 20140307031212) do
 
   create_table "addresses", force: true do |t|
     t.integer  "vendor_id"
@@ -37,12 +27,6 @@ ActiveRecord::Schema.define(version: 20140307031726) do
   end
 
   add_index "addresses", ["vendor_id"], name: "index_addresses_on_vendor_id"
-
-  create_table "addresstypes", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "vendors", force: true do |t|
     t.string   "name"

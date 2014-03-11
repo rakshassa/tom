@@ -13,7 +13,7 @@ class VendorsController < ApplicationController
     @vendor.clear_addresses!
     @vendor.destroy
 
-    flash[:success] = "Vendor deleted."
+    #flash[:success] = "Vendor deleted."
     
     respond_to do |format|      
       format.js
