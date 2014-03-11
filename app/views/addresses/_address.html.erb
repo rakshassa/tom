@@ -3,7 +3,7 @@
 <% end %>
 
 <%= address.street1 %><br>
-<%= address.street2 %><br>
+<%= if (!address.street2.blank?) then address.street2 + "<br>" end %>
 <%= address.city %>,&nbsp<%= address.state %>&nbsp<%= address.zip %><br>
-<%= render address.address_types %>
+<%= if !address.types.nil? then address.types.reject(&:blank?).to_sentence end %><br>
 <br>

@@ -3,40 +3,20 @@ class AddressesController < ApplicationController
 
   def destroy    
     @address = Address.find(params[:id])
-    @address.destroy
-         
-    respond_to do |format|      
-      format.js
-    end  
-  end
-
-  def create
-    #@address = Address.new
-    #@vendor = params[:vendor])
-    #@address = @vendor.addresses.build
-    render :partial => "addresses/edit", 
-           :locals => { :address => @address, :vendor => @vendor }, 
-           :layout => false, 
-           :status => :created
+    @address.destroy         
   end
 
 
   def update
-    @address = Address.find(params[:id])
-    @vendor = @address.vendor
-    
-    @address.update_attributes(vendor_params)
-    flash[:success] = "Address updated"
-    
-    respond_to do |format|
-      format.js
-    end    
+    @address = Address.find(params[:id])       
+    @address.update_attributes(address_params)
+    flash[:success] = "Address updated"    
   end 
 
   private
 
     def address_params
-      params.require(:address).permit(:street1, :street2, :city, :state, :zip)
+      params.require(:address).permit(:street1, :street2, :city, :state, :zip,
+        address_types_attributes: [:id, :name, :_destroy])
     end  
-
 end

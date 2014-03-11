@@ -8,6 +8,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip
+      t.text :types
 
       t.timestamps
     end

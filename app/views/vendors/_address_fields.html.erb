@@ -9,8 +9,11 @@
             <%= f.text_field :city, placeholder: "City", class: 'span3' %>
             <%= f.text_field :state, placeholder: "State", class: 'span1'%>      
             <%= f.text_field :zip, placeholder: "Zip Code", class: 'span2' %>
-          </div>          
+          </div>    
 
+          <%= f.select :types, 
+              options_for_select(["sales", "manufacturing", "billing"], f.object.types),{},
+              {:multiple => true } %>                          
 
           <%= f.link_to_remove "Remove this address" %>
         	<br>

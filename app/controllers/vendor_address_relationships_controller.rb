@@ -1,6 +1,0 @@
-class VendorAddressRelationshipsController < ApplicationController
-
-
-
-
-end

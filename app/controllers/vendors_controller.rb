@@ -35,17 +35,8 @@ class VendorsController < ApplicationController
 
   def new
   	@vendor = Vendor.new 
-    @vendor.addresses.build 
+    @address = @vendor.addresses.build 
   end  
-
-  def create_address
-    @vendor = Vendor.find(params[:id])
-    @address = @vendor.addresses.build
-
-    respond_to do |format|      
-      format.js
-    end     
-  end
 
   def edit
     @vendor = Vendor.find(params[:id])
@@ -66,7 +57,9 @@ class VendorsController < ApplicationController
 
     def vendor_params
       params.require(:vendor).permit(:name,
-        addresses_attributes: [:id, :street1, :street2, :city, :state, :zip, :_destroy])
+        addresses_attributes: [:id, :street1, :street2, :city, 
+          :state, :zip, :_destroy,
+          address_types_attributes: [:id, :name], types: []])
     end  
 
 end

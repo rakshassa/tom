@@ -4,6 +4,8 @@ class Address < ActiveRecord::Base
 	
 	belongs_to :vendor
 
+	serialize :types
+
 
 	validates(:street1,  {presence: true, length: { maximum: 30 } } )
 	validates(:street2,  {length: { maximum: 50 } } )
