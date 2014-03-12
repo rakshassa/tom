@@ -56,10 +56,12 @@ class VendorsController < ApplicationController
   private
 
     def vendor_params
-      params.require(:vendor).permit(:name,
+      params.require(:vendor).permit(:name, :year_established, :website,
+        :duns, :naics, :phone, :fax, :terms, products_provided: [], product_types: [],
+        types: [], 
+
         addresses_attributes: [:id, :street1, :street2, :city, 
-          :state, :zip, :_destroy,
-          address_types_attributes: [:id, :name], types: []])
+          :state, :zip, :_destroy, types: []])
     end  
 
 end

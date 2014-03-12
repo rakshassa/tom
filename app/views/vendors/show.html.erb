@@ -4,8 +4,6 @@
     <section>
       <h1>
         <%= @vendor.name %>
-
-      
       </h1>
     </section>   
   </aside>
@@ -13,11 +11,34 @@
   <div class="span8">
       <%= link_to "Edit this Vendor", edit_vendor_path,
                                 class: "btn btn-large btn-primary" %>    
-      <h3>Include Details Here.</h3>
-        <div class="span6 offset3">
-          <ul class="users">
-            <%= render @vendor.addresses %>
-          </ul>  
-     </div>
+      <h3>Vendor Profile</h3>
+      <div class="span6 offset3">
+        <h3>Addresses</h3>
+        <ul class="users">
+          <%= render @vendor.addresses %>
+        </ul>  
+        <h3>Company Profile</h3>     
+
+        <%= content_tag :div, "Business Types: " + 
+            @vendor.types.reject(&:blank?).to_sentence if !@vendor.types.nil? %>
+        <%= content_tag :div, "Year of Establishment: " + 
+            @vendor.year_established.to_s if !@vendor.year_established.blank? %>
+        <%= content_tag :div, "Website: " + 
+            @vendor.website if !@vendor.website.blank? %>
+        <%= content_tag :div, "DUNS: " + 
+            @vendor.duns if !@vendor.duns.blank? %>
+        <%= content_tag :div, "NAICS: " + 
+            @vendor.naics if !@vendor.naics.blank? %>
+        <%= content_tag :div, "Main Phone: " + 
+            @vendor.phone if !@vendor.phone.blank? %>
+        <%= content_tag :div, "Main Fax: " + 
+            @vendor.fax if !@vendor.fax.blank? %> 
+        <%= content_tag :div, "Main Products/Service Provided: " + 
+            @vendor.products_provided.reject(&:blank?).to_sentence  if !@vendor.products_provided.nil? %>
+        <%= content_tag :div, "Product Type: " + 
+            @vendor.product_types.reject(&:blank?).to_sentence  if !@vendor.product_types.nil? %>    
+        <%= content_tag :div, "Standard Terms: " + 
+            @vendor.terms if !@vendor.terms.blank? %>       
+      </div>
   </div>  
 </div>

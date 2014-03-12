@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307031212) do
+ActiveRecord::Schema.define(version: 20140311143551) do
+
+  create_table "address_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "addresses", force: true do |t|
     t.integer  "vendor_id"
@@ -28,8 +34,36 @@ ActiveRecord::Schema.define(version: 20140307031212) do
 
   add_index "addresses", ["vendor_id"], name: "index_addresses_on_vendor_id"
 
+  create_table "business_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "vendors", force: true do |t|
     t.string   "name"
+    t.text     "types"
+    t.integer  "year_established"
+    t.string   "website"
+    t.string   "duns"
+    t.string   "naics"
+    t.string   "phone"
+    t.string   "fax"
+    t.text     "products_provided"
+    t.text     "product_types"
+    t.string   "terms"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

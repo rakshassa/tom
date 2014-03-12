@@ -1,7 +1,7 @@
     <%= nested_form_for(@vendor) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
+      <%= f.label :name, "Company Name" %>
       <%= f.text_field :name, class: 'span6' %>
 
       <br><h3>Addresses</h3>
@@ -9,6 +9,42 @@
 
 	    <p><%= f.link_to_add "Add an address", :addresses %></p>
 
+      <br><h3>Company Data</h3>
+
+      <%= f.label :types, "Business Type" %>
+      <%= f.collection_select(:types, BusinessType.all, :name, :name,
+                          {}, { :multiple => true, :selected => f.object.types} ) %>
+
+      <%= f.label :year_established %>
+      <%= f.text_field :year_established, class: 'span6' %>
+
+      <%= f.label :website %>
+      <%= f.text_field :website, class: 'span6' %>
+
+      <%= f.label :duns %>
+      <%= f.text_field :duns, class: 'span6' %>
+
+      <%= f.label :naics %>
+      <%= f.text_field :naics, class: 'span6' %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'span6' %>
+
+      <%= f.label :fax %>
+      <%= f.text_field :fax, class: 'span6' %>
+
+      <%= f.label :products_provided, "Main Products/Service Provided" %>
+      <%= f.collection_select(:products_provided, Product.all, :name, :name,
+                          {}, { :multiple => true, 
+                            :selected => f.object.products_provided} ) %>
+
+      <%= f.label :product_types %>
+      <%= f.collection_select(:product_types, ProductType.all, :name, :name,
+                          {}, { :multiple => true, 
+                            :selected => f.object.product_types} ) %>
+
+      <%= f.label :terms %>
+      <%= f.text_field :terms, class: 'span6' %>
       <br>
       <br>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>

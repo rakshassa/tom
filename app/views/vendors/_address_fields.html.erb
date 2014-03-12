@@ -11,9 +11,10 @@
             <%= f.text_field :zip, placeholder: "Zip Code", class: 'span2' %>
           </div>    
 
-          <%= f.select :types, 
-              options_for_select(["sales", "manufacturing", "billing"], f.object.types),{},
-              {:multiple => true } %>                          
+ 
+
+          <%= f.collection_select(:types, AddressType.all, :name, :name,
+                          {}, { :multiple => true, :selected => f.object.types} ) %>                        
 
           <%= f.link_to_remove "Remove this address" %>
         	<br>
