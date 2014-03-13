@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
     @vendors = Vendor.paginate(page: params[:page])
@@ -64,7 +65,14 @@ class VendorsController < ApplicationController
           :state, :zip, :_destroy, types: []],
         contacts_attributes: [:id, :first_name, :last_name, 
           :phone, :fax, :cell, :email, :_destroy, :title])
-
     end  
+
+    def sort_column
+      Contact.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
 end

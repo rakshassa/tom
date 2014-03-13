@@ -7,6 +7,6 @@
 <%= content_tag :div, address.street2 if address.street2? %>
 <%= address.city %>,&nbsp<%= address.state %>&nbsp<%= address.zip %><br>
 
-<%= content_tag :div, address.types.reject(&:blank?).to_sentence if !address.types.nil? %>
+<%= content_tag :div, address.types.reject(&:blank?).to_sentence if (!address.types.nil? && !address.types.reject(&:blank?).to_sentence.blank?) %>
 
 <br>

@@ -1,27 +1,30 @@
 <% provide(:title, @vendor.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span3">
     <section>
       <h3>
         <%= @vendor.name %>
-      </h1>
+      </h3>
       <%= link_to "Edit this Vendor", edit_vendor_path,
-                                class: "btn btn-large btn-primary" %>       
-    </section>   
-  </aside>
-
-  <div class="span8">      
-      <div class="span6">
+                                class: "btn btn-large btn-primary" %>
+    </section>
+    <section>
+      <div>
         <h3>Addresses</h3>
         <ul class="users">
           <%= render @vendor.addresses %>
         </ul> 
-      </div> 
+      </div>                                        
+    </section>   
+  </aside>
+
+  <div class="span8">      
+
       <div class="span6">
         <h3>Company Profile</h3>     
         <%= render 'vendors/profile', :locals => { vendor: @vendor } %>   
       </div>
-      <div class="span6">
+      <div class="span8">
         <h3>Contacts</h3>     
         <%= render 'vendors/contacts', :locals => { vendor: @vendor } %>   
       </div>      

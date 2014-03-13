@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+table.sortable {
+	border-collapse: collapse;
+}
+
+.sortable th .current {
+	padding-right: 12px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	cursor: pointer;
+}
+
+.sortable th .asc {
+	background-image: url(<%= asset_path 'up_arrow.gif' %>);
+}
+
+.sortable th .desc {
+	background-image: url(<%= asset_path 'down_arrow.gif' %>);
+}
