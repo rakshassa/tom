@@ -9,7 +9,6 @@ class Address < ActiveRecord::Base
 	validates(:city,  {presence: true, length: { maximum: 30 } } )
 	validates(:state,  {presence: true, length: { maximum: 2 } } )
 
-# why was there an 'i' character trailing the reg_ex?
 	VALID_ZIP_REGEX = /\d{5}(?:[-\s]\d{4})?/
 	validates(:zip,  {presence: true, 
 		format:     { with: VALID_ZIP_REGEX },

@@ -3,6 +3,10 @@ class Vendor < ActiveRecord::Base
 	accepts_nested_attributes_for :addresses, allow_destroy: true,
 			reject_if: :all_blank
 
+	has_many :contacts, dependent: :destroy
+	accepts_nested_attributes_for :contacts, allow_destroy: true,
+			reject_if: :all_blank			
+
 	serialize :types
 	serialize :products_provided
 	serialize :product_types			
@@ -26,4 +30,18 @@ class Vendor < ActiveRecord::Base
 	def clear_addresses!()
 		addresses.each(&:destroy)
 	end
+
+  	def add_contact!(contact)
+		if (!(self.contacts.find_by(id: contact.id)))
+			contacts.create!(contact)
+		end
+	end
+
+	def remove_contact!(contact)
+		self.contacts.find_by(id: contact.id).destroy
+	end
+
+	def clear_contacts!()
+		contacts.each(&:destroy)
+	end	
 end

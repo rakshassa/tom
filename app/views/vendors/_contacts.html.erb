@@ -1,0 +1,12 @@
+      <table id="contacts_table" class="table table-striped table-bordered">
+        <tr>
+          <th class="contact_title"><%= link_to "Title", :sort => "title" %></th>
+          <th class="first_name"><%= link_to "First Name", :sort => "first_name" %></th>
+          <th class="last_name"><%= link_to "Last Name", :sort => "last_name" %></th>
+          <th class="phone"><%= link_to "Phone Number", :sort => "phone" %></th>
+          <th class="fax"><%= link_to "Fax Number", :sort => "fax" %></th>
+          <th class="cell"><%= link_to "Cell Number", :sort => "cell" %></th>
+          <th class="email"><%= link_to "Email Address", :sort => "email" %></th>
+        </tr>
+        <%= render @vendor.contacts.order("title") %>
+      </table>

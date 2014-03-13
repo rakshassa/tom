@@ -1,0 +1,18 @@
+<tr class="fields">	
+	<td><%= f.link_to_remove "Remove" %></td>
+	<td><%= f.collection_select(:title, Title.all, :name, :name,
+            { }, { :selected => f.object.title, :class => 'contact_title'} ) %></td>
+	<td><%= f.text_field :first_name, 
+			placeholder: "First Name", class: 'first_name' %></td>
+	<td><%= f.text_field :last_name, 
+			placeholder: "Last Name", class: 'last_name'  %></td>
+	<td><%= f.text_field :phone, 
+			placeholder: "Phone Number", class: 'phone'  %></td>
+	<td><%= f.text_field :fax, 
+			placeholder: "Fax Number", class: 'fax'  %></td>
+	<td><%= f.text_field :cell, 
+			placeholder: "Cell Number", class: 'cell'  %></td>
+	<td><%= f.text_field :email, 
+			placeholder: "Email Address", class: 'email'  %></td>
+</tr>
+

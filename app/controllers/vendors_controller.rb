@@ -22,8 +22,7 @@ class VendorsController < ApplicationController
 
   def create
     @vendor = Vendor.new(vendor_params)
-    #need to also save the addresses which were created using the "add address" button
-    #note that they were not linked into this vendor because they were still invalid.
+
     if @vendor.save
       flash[:success] = "Vendor Created!"
       
@@ -36,6 +35,7 @@ class VendorsController < ApplicationController
   def new
   	@vendor = Vendor.new 
     @address = @vendor.addresses.build 
+    @contact = @vendor.contacts.build
   end  
 
   def edit
@@ -61,7 +61,10 @@ class VendorsController < ApplicationController
         types: [], 
 
         addresses_attributes: [:id, :street1, :street2, :city, 
-          :state, :zip, :_destroy, types: []])
+          :state, :zip, :_destroy, types: []],
+        contacts_attributes: [:id, :first_name, :last_name, 
+          :phone, :fax, :cell, :email, :_destroy, :title])
+
     end  
 
 end
