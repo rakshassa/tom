@@ -1,0 +1,9 @@
+
+<br> 
+<%= content_tag(:div) do content_tag(:b,"Are you ISO, TS, or QS certified?") + "  YES" if @vendor.certified? end %>
+<%= content_tag(:div) do content_tag(:b,"Are you ISO, TS, or QS certified?") + "  NO" if !@vendor.certified? end %>
+
+<%= content_tag(:div) do content_tag(:b,"Date of last audit: ") + @vendor.last_audit.to_s if @vendor.certified? end %>
+<%= content_tag(:div) do content_tag(:b,"Date of cert. expiration: ") +  @vendor.cert_expire.to_s if @vendor.certified? end %>
+<%= content_tag(:div) do content_tag(:b,"List summary of findings from most recent audit: ") if @vendor.certified? end %>
+<%= content_tag :div, "-  " + @vendor.audit_findings if @vendor.certified? %>

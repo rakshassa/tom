@@ -12,6 +12,10 @@ class CreateVendors < ActiveRecord::Migration
       t.text :products_provided
       t.text :product_types
       t.string :terms
+      t.boolean :certified
+      t.date :last_audit
+      t.date :cert_expire
+      t.text :audit_findings
 
       t.timestamps
     end

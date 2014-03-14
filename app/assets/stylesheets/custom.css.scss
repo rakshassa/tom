@@ -180,6 +180,7 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
+  width: 150px;
 
   margin-bottom: 15px;
   @include box_sizing;
@@ -251,4 +252,17 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+
+
+.bordered-div {
+  border-radius: 25px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.findings {
+  width: 450px;
+  max-width: 450px;
 }

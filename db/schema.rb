@@ -85,6 +85,10 @@ ActiveRecord::Schema.define(version: 20140313012340) do
     t.text     "products_provided"
     t.text     "product_types"
     t.string   "terms"
+    t.boolean  "certified"
+    t.date     "last_audit"
+    t.date     "cert_expire"
+    t.text     "audit_findings"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

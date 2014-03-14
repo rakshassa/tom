@@ -45,7 +45,27 @@
 
       <%= f.label :terms %>
       <%= f.text_field :terms, class: 'span6' %>
+
+      <div class="bordered-div">
+        <div class="form-inline">        
+          <%= f.check_box :certified, :id => "cert_box", :onclick=>"TotalCheckedValues()" %>
+          <%= f.label :certified, "Are you ISO, TS, or QS certified?", class: 'cert_box' %>
+        </div>
+
+        <div id="cert_parms" style=<%= default_cert(f.object.certified) %>>
+          <%= f.label :last_audit, "Date of last audit" %>
+          <%= f.date_select(:last_audit, { :start_year => 1980, :end_year => Time.now.year, :selected => f.object.last_audit }) %>
+
+          <%= f.label :cert_expire, "Date of cert. expiration" %>
+          <%= f.date_select(:cert_expire, { :start_year => 2000, :end_year => Time.now.year+20, :selected => f.object.cert_expire }) %> 
+
+          <%= f.label :audit_findings, "List summary of findings from most recent audit" %>      
+          <%= f.text_area :audit_findings, { cols: 60, rows: 4, class: "findings" } %>
+
+        </div>
+      </div>
       <br>
+
       <h3>Contact Information</h3>
       <table id="contacts_table" class="table table-striped table-bordered">
         <tr>

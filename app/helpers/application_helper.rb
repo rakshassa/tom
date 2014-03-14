@@ -30,4 +30,8 @@ module ApplicationHelper
   	end
   	
   end
+
+  def default_cert(cert)
+    cert ? "display:block" : "display:none"
+  end
 end

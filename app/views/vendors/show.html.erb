@@ -25,6 +25,9 @@
         <%= render 'vendors/profile', :locals => { vendor: @vendor } %>   
       </div>
       <div class="span8">
+        <%= render 'vendors/cert', :locals => { vendor: @vendor } %>
+      </div>
+      <div class="span8">
         <h3>Contacts</h3>     
         <%= render 'vendors/contacts', :locals => { vendor: @vendor } %>   
       </div>      

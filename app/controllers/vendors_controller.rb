@@ -58,7 +58,8 @@ class VendorsController < ApplicationController
 
     def vendor_params
       params.require(:vendor).permit(:name, :year_established, :website,
-        :duns, :naics, :phone, :fax, :terms, products_provided: [], product_types: [],
+        :duns, :naics, :phone, :fax, :terms, :certified, :last_audit, 
+        :cert_expire, :audit_findings, products_provided: [], product_types: [],
         types: [], 
 
         addresses_attributes: [:id, :street1, :street2, :city, 
